@@ -1,7 +1,7 @@
-Day 1 Assignments:
+## Day 1 Assignments:
 
-[Q]: What is Emmmet?
- A:  Emmet is a plugin which provides shortcut abbreviations for writing HTML, CSS, XML, etc boilerplate code. It comes as a built-in support in VS code. General way to write emmet abbriviation: tagName[series of expression].
+# [Q]: What is Emmmet?
+**A**:  Emmet is a plugin which provides shortcut abbreviations for writing HTML, CSS, XML, etc boilerplate code. It comes as a built-in support in VS code. General way to write emmet abbriviation: tagName[series of expression].
      • Generating HTML boilerplate code: Simply type '!' and you'll find a popup for emmet. Click on the 'Emmet Abbriviation' option and the html skeleton code will appear on the text editor.
      • Elements with text content inside them: To write a div with some text inside it- div{This is a div} - will give <div>This is a div</div>
      • Nested Elements: To generate nested elements, use '>' operator. Eg, div>div>h1 produces: <div><div><h1></h1></div></div>
