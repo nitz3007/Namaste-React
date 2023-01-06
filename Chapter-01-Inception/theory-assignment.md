@@ -9,7 +9,7 @@ Day 1 Assignments:
      • Custom attributes: If you want a div with custom data property, try 'div[data-name=logo]' will give: <div data-name="logo"></div>
      • Generating Siblings: To generate siblings ie, elements at the same level use '+' operator. Eg, 'header+div+footer' gives: <header></header><div></div><footer></footer>
      
-     Refer https://medium.com/@kartik2406/web-development-with-vs-code-part-1-emmet-6af80f0f630c for more info on Emmet abbriviations.
+     Refer [Emmet Article] (https://medium.com/@kartik2406/web-development-with-vs-code-part-1-emmet-6af80f0f630c) for more info on Emmet abbriviations.
      
 CDN:
 
