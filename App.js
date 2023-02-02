@@ -1,24 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import HeaderLogo from './assets/logo.jpg';
+import Avatar from "./assets/avatar.png";
 
-const heading1 = React.createElement("h1",
-{
-    id: "title1"
-},
-"Heading 1");
-
-const heading2 = React.createElement("h2",
-{
-    id: "title2"
-},
-"Heading 2")
-
-const container = React.createElement("div",
-{
-    id: "container"
-},
-[heading1, heading2]);
-
+const Header = () => {
+    return (
+        <div className='header'>
+            <img src={HeaderLogo} alt="logo" className="logo-image"/>
+            <div>
+                <input className="search-bar" placeholder='Search'/>
+            </div>
+            <img src={Avatar} className="avatar-img" alt="user"/>
+        </div>
+    );
+}
 const root = ReactDOM.createRoot(document.getElementById('root'));
-//passing react element into root
-root.render(container);
+root.render(<Header/>);

@@ -1,3 +1,29 @@
-#container {
-    background-color: blueviolet;
+body {
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    background-color: #d6f5d6;
+    padding: 0.5rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-image {
+    width: 4rem;
+    border-radius: 3rem;
+}
+
+.search-bar {
+    width: 20rem;
+    height: 2.5rem;
+    border-radius: 1rem;
+    border: none;
+    padding: 0 1rem;
+}
+
+.avatar-img {
+    width: 4rem;
+    cursor: pointer;
 }
