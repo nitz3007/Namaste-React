@@ -1,3 +1,43 @@
-#container {
-    background-color: blueviolet;
+
+body {
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.header-logo {
+    height: 3rem;
+}
+
+.header-navigation-list {
+    display: flex;
+    list-style: none;
+}
+
+.header-navigation-list-item {
+    margin: 0.5rem 1.5rem;
+}
+
+.card {
+    border: 1px solid #d3d3d3;
+    padding: 1rem;
+    width: 15rem;
+    margin: 1rem;
+}
+
+.card > img {
+    width: 100%;
+}
+
+.restaurant-list {
+    display: flex;
+    flex-wrap: wrap;
 }
