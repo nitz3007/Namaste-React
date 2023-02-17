@@ -1,22 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Logo from "./assets/logo.png"
+export const CARD_IMG_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
-const Header = () => {
-    return (
-        <div className='header'>
-            <img alt="logo" src={Logo} className='header-logo'/>
-            <ul className='header-navigation-list'>
-                <li className='header-navigation-list-item'>About</li>
-                <li className='header-navigation-list-item'>Contacts</li>
-                <li className='header-navigation-list-item'>Instamart</li>
-                <li className='header-navigation-list-item'>Cart</li>
-            </ul>
-        </div>
-    )
-};
+export const GET_ALL_RESTAURANTS_API = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=10.050718&lng=76.332305&page_type=DESKTOP_WEB_LISTING";
 
-const restaurantList = [
+export const restaurantList = [
     {
         "type": "restaurant",
         "data": {
@@ -2095,50 +2081,3 @@ const restaurantList = [
     "subtype": "basic"
     }
     ];
-
-const RestaurantCard = ({name, cloudinaryImageId, cuisines, deliveryTime, avgRating}) => {
-    return (
-        <div className='card'>
-            <img src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + cloudinaryImageId}
-                alt="restaurant-image"/>
-            <h1>{name}</h1>
-            <h2>{cuisines.join(", ")}</h2>
-            <h3>{deliveryTime} minutes</h3>
-            <h4>{avgRating} stars</h4>
-        </div>
-    );
-}
-
-const Body = () => {
-    return (
-        <div className='restaurant-list'>
-            {/* the spread operator is spreading the restaurantList[i].data object into 
-            individual props which can then be destructured as prop parameter with 
-            their individual keys */}
-            {restaurantList.map(restaurant => (
-                <RestaurantCard {...restaurant.data} key={restaurant.data.id}/>
-            ))}
-        </div>
-        
-    )
-};
-
-const Footer = () => {
-    return (
-        <h3>Footer</h3>
-    )
-}
-
-const AppLayout = () => {
-    return (
-        <>
-            <Header/>
-            <Body/>
-            <Footer/>
-        </>   
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-//passing react element into root
-root.render(<AppLayout/>);
