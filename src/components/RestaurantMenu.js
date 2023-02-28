@@ -1,23 +1,11 @@
 import { useParams } from "react-router-dom";
-import {useEffect, useState} from "react";
-import {RESTAURANT_DETAILS_API, CARD_IMG_URL} from "../constants";
+import {CARD_IMG_URL} from "../constants";
 import ShimmerUI from "./ShimmerUI";
+import useRestaurant from "../utils/useRestaurant";
 
 const RestaurantMenu = () => {
     const params = useParams();
-    const [restaurantDetail, setRestaurantDetails] = useState(null); 
-    useEffect(()=>{
-        getRestaurantDetails();
-    },[])
-
-    const getRestaurantDetails = async() => {
-        const response = await fetch(RESTAURANT_DETAILS_API + params.id);
-        const json = await response.json();
-        console.log(json);
-        setRestaurantDetails(json?.data);
-    }
-
-    
+    const restaurantDetail = useRestaurant(params.id);
 
     return (
         (!restaurantDetail) ?

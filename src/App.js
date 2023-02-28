@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
-import Header from './Header';
-import Body from './Body';
-import Footer from './Footer';
-import About from './About';
-import Error from './Error';
-import Contacts from './Contacts';
-import RestaurantMenu from './RestaurantMenu';
+import Header from './components/Header';
+import Body from './components/Body';
+import Footer from './components/Footer';
+import About from './components/About';
+import Error from './components/Error';
+import Contacts from './components/Contacts';
+import RestaurantMenu from './components/RestaurantMenu';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import Login from './Login';
+import Login from './components/Login';
+import ShimmerUI from './components/ShimmerUI';
+// import Instamart from './components/Instamart';
+
+const Instamart = lazy(()=> import ("./components/Instamart"));
 
 const AppLayout = () => {
     return (
@@ -35,12 +39,18 @@ const appRouter = createBrowserRouter([
                 element: <About/>
             },
             {
-                path: 'contacts',
+                path: '/contacts',
                 element: <Contacts/>
             },
             {
-                path: 'restaurant/:id',
+                path: '/restaurant/:id',
                 element: <RestaurantMenu/>
+            },
+            {
+                path: '/instamart',
+                element:<Suspense fallback={<ShimmerUI/>}>
+                            <Instamart/>
+                        </Suspense>
             }
         ]
     },

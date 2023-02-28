@@ -1,10 +1,13 @@
-import Logo from "../assets/logo.png"
+import Logo from "../assets/logo.png";
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(true)
     const navigate = useNavigate();
+    const IsOnline = useOnline();
+
     return (
         <div className='header'>
             <Link to="/">
@@ -17,10 +20,13 @@ const Header = () => {
                 <Link to="/contacts">
                     <li className='header-navigation-list-item'>Contacts</li>
                 </Link>
+                <Link to="/instamart">
+                    <li className='header-navigation-list-item'>Instamart</li>
+                </Link>
                 
-                <li className='header-navigation-list-item'>Instamart</li>
                 <li className='header-navigation-list-item'>Cart</li>
             </ul>
+            {IsOnline ? "Online":"Offline"}
             {isLoggedIn ? 
                 <button onClick={()=>{
                     setIsLoggedIn(false);
