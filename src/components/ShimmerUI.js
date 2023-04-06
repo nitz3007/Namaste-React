@@ -1,6 +1,8 @@
 const ShimmerUI = () => {
     return (
-        <h1>Loading....</h1>
+        <div>
+            <div className="bg-slate-300 "></div>
+        </div>
     );
 }
 

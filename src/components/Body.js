@@ -9,6 +9,7 @@ const Body = () => {
 
     const [searchInput, setSearchInput] = useState("");
     const [restaurants, setRestaurants] = useState([]);
+    const [totalRestaurants, setTotalRestaurants] = useState("");
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     useEffect(()=>{
         getRestaurants();
@@ -24,6 +25,7 @@ const Body = () => {
             })
             .then((data)=>{
                 setRestaurants(data?.data?.cards[2]?.data?.data?.cards);
+                setTotalRestaurants(data?.data?.cards[2]?.data?.data?.totalOpenRestaurants);
                 setFilteredRestaurants(data?.data?.cards[2]?.data?.data?.cards);
             })
             .catch((error)=>{
@@ -37,21 +39,28 @@ const Body = () => {
             <ShimmerUI/>
             :
             <>
-                <div className="search-container">
-                    <input
-                        type="text"
-                        placeholder="Search Restaurants"
-                        value={searchInput}
-                        onChange={(e) => { setSearchInput(e.target.value); } } />
-                    <button
-                        onClick={() => {
-                            const data = filterRestaurants(searchInput, restaurants);
-                            setFilteredRestaurants(data);
-                        } }>
-                        Search
-                    </button>
+                <div className="flex justify-between h-14 mx-8 items-center">
+                    <p className='text-2xl font-semibold font-sans'>{totalRestaurants} Restaurants</p>
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Search Restaurants"
+                            value={searchInput}
+                            onChange={(e) => { setSearchInput(e.target.value); } } 
+                            className="border-2 w-80 px-4 py-2 rounded-lg"
+                        />
+                        <button
+                            onClick={() => {
+                                const data = filterRestaurants(searchInput, restaurants);
+                                setFilteredRestaurants(data);
+                            } }
+                            className="bg-[#fc8019] text-white px-4 py-2 rounded-md ml-2"
+                        >
+                            Search
+                        </button>
+                    </div>
                 </div>
-                <div className='restaurant-list'>
+                <div className='flex flex-wrap mx-6 my-4 justify-center'>
                     {/* the spread operator is spreading the restaurantList[i].data object into
                     individual props which can then be destructured as prop parameter with
                     their individual keys */}
