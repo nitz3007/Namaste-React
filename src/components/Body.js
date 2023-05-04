@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import ShimmerUI from './ShimmerUI';
 import {GET_ALL_RESTAURANTS_API} from '../constants';
 import {filterRestaurants} from '../utils/helper';
-// import UserContext from '../utils/userContext';
+import UserContext from '../utils/userContext';
 
 const Body = () => {
 
@@ -12,7 +12,7 @@ const Body = () => {
     const [restaurants, setRestaurants] = useState([]);
     const [totalRestaurants, setTotalRestaurants] = useState("");
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-    // const {user, setUser} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
     useEffect(()=>{
         getRestaurants();
     },[]);
@@ -60,12 +60,12 @@ const Body = () => {
                         >
                             Search
                         </button>
-                        {/* <input value={user.name} onChange={(e)=>setUser(
+                        <input value={user.name} onChange={(e)=>setUser(
                             {
                                 ...user,
                                 name: e.target.value,
                             }
-                        )}></input> */}
+                        )}></input>
                     </div>
                 </div>
                 <div className='flex flex-wrap mx-6 my-4 justify-center'>
