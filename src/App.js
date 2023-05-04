@@ -11,6 +11,8 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Login from './components/Login';
 import ShimmerUI from './components/ShimmerUI';
 import UserContext from './utils/userContext';
+import {Provider} from 'react-redux';
+import store from './utils/store';
 // import Instamart from './components/Instamart';
 
 const Instamart = lazy(()=> import ("./components/Instamart"));
@@ -24,6 +26,7 @@ const AppLayout = () => {
       });
     //this user state will ideally get auth data from an API and 
     return (
+        <Provider store={store}>
         <UserContext.Provider
             value = {{
                 user: user,
@@ -33,6 +36,7 @@ const AppLayout = () => {
             <Outlet/>
             <Footer/>
         </UserContext.Provider>   
+        </Provider>
     )
 }
 

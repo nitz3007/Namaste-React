@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import {useContext} from "react";
 import UserContext from "../utils/userContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -13,6 +14,7 @@ const Header = () => {
     const navigate = useNavigate();
     const IsOnline = useOnline();
     const {user} = useContext(UserContext);
+    const cartItems = useSelector(store=>store.cart.items);
 
     const handleAvatarClick = ()=> {
         setShowAvatarDropdown((prev) => !prev);
@@ -34,7 +36,7 @@ const Header = () => {
                     <li className='header-navigation-list-item'>Instamart</li>
                 </Link>
                 
-                <li className="font-sans font-semibold mx-4 hover:text-[#fc8019]">Cart</li>
+                <li className="font-sans font-semibold mx-4 hover:text-[#fc8019]">{`Cart(${cartItems.length})`}</li>
             </ul>
             <span>{user.name}</span>
             <div className="relative">
