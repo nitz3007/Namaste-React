@@ -4,12 +4,15 @@ import {Link, useNavigate} from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import {useContext} from "react";
+import UserContext from "../utils/userContext";
 
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const [showAvatarDropdown, setShowAvatarDropdown] = useState(false);
     const navigate = useNavigate();
     const IsOnline = useOnline();
+    const {user} = useContext(UserContext);
 
     const handleAvatarClick = ()=> {
         setShowAvatarDropdown((prev) => !prev);
@@ -33,8 +36,9 @@ const Header = () => {
                 
                 <li className="font-sans font-semibold mx-4 hover:text-[#fc8019]">Cart</li>
             </ul>
-            
+            <span>{user.name}</span>
             <div className="relative">
+                
                 <div className="bg-[#bcd6ce] p-2 rounded-full relative w-12 h-12 flex justify-center items-center" onClick={handleAvatarClick} onBlur={()=>(setShowAvatarDropdown(false))}>
                     <FontAwesomeIcon icon={faUser} size='lg' color="#008080"/>
                     {IsOnline ? 
