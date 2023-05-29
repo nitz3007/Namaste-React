@@ -14,7 +14,7 @@ const Header = () => {
     const navigate = useNavigate();
     const IsOnline = useOnline();
     const {user} = useContext(UserContext);
-    const cartItems = useSelector(store=>store.cart.items);
+    const cartItemsCount = useSelector(store=>store.cart.totalItemCount);
 
     const handleAvatarClick = ()=> {
         setShowAvatarDropdown((prev) => !prev);
@@ -35,10 +35,12 @@ const Header = () => {
                 <Link to="/instamart" className="font-sans font-semibold mx-4 hover:text-[#fc8019]">
                     <li className='header-navigation-list-item'>Instamart</li>
                 </Link>
+                <Link to="/cart" className="font-sans font-semibold mx-4 hover:text-[#fc8019]">
+                <li className="font-sans font-semibold mx-4 hover:text-[#fc8019]">{`Cart(${cartItemsCount})`}</li>
+                </Link>
                 
-                <li className="font-sans font-semibold mx-4 hover:text-[#fc8019]">{`Cart(${cartItems.length})`}</li>
             </ul>
-            <span>{user.name}</span>
+            {/* <span>{user.name}</span> */}
             <div className="relative">
                 
                 <div className="bg-[#bcd6ce] p-2 rounded-full relative w-12 h-12 flex justify-center items-center" onClick={handleAvatarClick} onBlur={()=>(setShowAvatarDropdown(false))}>

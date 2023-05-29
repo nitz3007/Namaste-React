@@ -58,9 +58,12 @@ const RestaurantMenu = () => {
                 {menuInfo.map((category)=>(
                     category?.card?.card["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" &&
                     <MenuSection 
+                        key = {category?.card?.card?.title}
                         cardInfo = {category?.card?.card} 
                         isVisible = {visibleSection === category?.card?.card?.title}
                         setIsVisible = {()=> setVisibleSection(!visibleSection ? category?.card?.card?.title : "")}
+                        restaurantName = {restaurantInfo.name}
+                        restaurantArea = {restaurantInfo.areaName}
                     />
                 ))}   
             </div>
