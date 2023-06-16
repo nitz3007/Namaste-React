@@ -1,8 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import Veg from '../assets/veg.jpg';
 import NonVeg from '../assets/non-veg.png';
 import {CARD_IMG_URL} from "../constants";
-import { useState } from 'react';
 import {useDispatch} from 'react-redux';
 import {addItem} from '../utils/cartSlice';
 
@@ -49,7 +48,7 @@ const MenuSection = ({cardInfo, isVisible, setIsVisible, restaurantName, restaur
                         </button>
                         <button 
                             className="absolute text-[#60b246] font-bold font-sans border-slate-300 border-[1px] rounded-sm px-4 py-1 left-1/2 -translate-x-1/2 z-10 bg-white bottom-1/4 translate-y-full"
-                            onClick={()=>handleAddItem(item.card.info)} >
+                            onClick={()=>handleAddItem(item.card.info)} data-testid="add-btn">
                             ADD
                         </button>
                     </div>

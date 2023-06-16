@@ -1,26 +1,44 @@
 import { useParams } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ShimmerUI from "./ShimmerUI";
-import useRestaurant from "../utils/useRestaurant";
+// import useRestaurant from "../utils/useRestaurant";
 import GreenStar from '../assets/green_star.svg';
 import Clock from '../assets/clock.png';
 import Rupee from '../assets/indian-rupee-sign.png';
 import MenuSection from "./MenuSection";
-
+import {RESTAURANT_DETAILS_API} from "../constants";
 
 
 const RestaurantMenu = () => {
     const params = useParams();
-    const restaurantDetail = useRestaurant(params.id);
-    
-    const restaurantInfo = restaurantDetail?.cards[0]?.card?.card?.info;
-    const menuInfo = restaurantDetail?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+    // const restaurantDetail = useRestaurant(params.id);
+    const [restaurantDetails, setRestaurantDetails]= useState(null);
     const [visibleSection, setVisibleSection] = useState("");
 
+    useEffect(()=> {
+        getRestaurantDetails();
+    },[]);
+
+    useEffect(()=>{
+        if(restaurantDetails) {
+            setVisibleSection( restaurantDetails?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.title);
+        } 
+    },[restaurantDetails])
+
+    const getRestaurantDetails = async() => {
+        const response = await fetch(RESTAURANT_DETAILS_API + params.id);
+        const json = await response.json();
+        setRestaurantDetails(json.data);
+        
+    }
+
+    const restaurantInfo = restaurantDetails?.cards[0]?.card?.card?.info;
+    const menuInfo = restaurantDetails?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+    
     return (
-        (!restaurantDetail) ?
+        (!restaurantDetails) ?
         <ShimmerUI/> :
-        <div className="mx-40 my-8">
+        <div className="mx-40 my-8" data-testid="menu">
             {/* Restaurant Header */}
             <div className="p-4">
                 <div className="flex justify-between mb-4">

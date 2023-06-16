@@ -2,7 +2,7 @@ const ShimmerUI = () => {
     const rows = [1,2,3,4,5,6,7,8];
 
     return (
-        <div className="flex flex-wrap mx-6 my-4 justify-center">
+        <div className="flex flex-wrap mx-6 my-4 justify-center" data-testid="shimmer-ui">
             {rows.map((i)=>(
                 <div key={i} className="flex flex-col w-72 border-2 m-4 p-4">
                     <div className="bg-slate-200 w-64 h-40"></div>

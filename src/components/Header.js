@@ -1,4 +1,4 @@
-import Logo from "../assets/logo.png";
+import Logo from "../assets/foodAppLogo.jpg";
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import useOnline from "../utils/useOnline";
@@ -21,11 +21,11 @@ const Header = () => {
     }
 
     return (
-        <div className='flex justify-between items-center border-b-2 px-12'>
+        <header className='flex justify-between items-center border-b-2 px-12'>
             <Link to="/">
-                <img alt="logo" src={Logo} className='w-16'/>
+                <img alt="logo" src={Logo} className='w-20' data-testid="logo"/>
             </Link>
-            <ul className='flex '>
+            <nav className='flex list-none'>
                 <Link to="/about" className="font-sans font-semibold mx-4 hover:text-[#fc8019]">
                     <li className='header-navigation-list-item'>About</li>
                 </Link>
@@ -36,10 +36,10 @@ const Header = () => {
                     <li className='header-navigation-list-item'>Instamart</li>
                 </Link>
                 <Link to="/cart" className="font-sans font-semibold mx-4 hover:text-[#fc8019]">
-                <li className="font-sans font-semibold mx-4 hover:text-[#fc8019]">{`Cart(${cartItemsCount})`}</li>
+                    <li className="font-sans font-semibold hover:text-[#fc8019]" data-testid="cart-link">{`Cart(${cartItemsCount})`}</li>
                 </Link>
                 
-            </ul>
+            </nav>
             {/* <span>{user.name}</span> */}
             <div className="relative">
                 
@@ -68,7 +68,7 @@ const Header = () => {
                 }
             </div>
            
-        </div>
+        </header>
     )
 };
 

@@ -17,25 +17,34 @@ const Body = () => {
         getRestaurants();
     },[]);
 
-    const getRestaurants = () => {
-        fetch(GET_ALL_RESTAURANTS_API)
-            .then((response)=>{
-                if(!response.ok){
-                    throw new Error("Network response is not OK");
-                }
-                return response.json();
-            })
-            .then((data)=>{
-                setRestaurants(data?.data?.cards[2]?.data?.data?.cards);
-                setTotalRestaurants(data?.data?.cards[2]?.data?.data?.totalOpenRestaurants);
-                setFilteredRestaurants(data?.data?.cards[2]?.data?.data?.cards);
-            })
-            .catch((error)=>{
-                console.log("Something is wrong with your fetch operation!");
-            })
-    }
+    // const getRestaurants = () => {
+    //     fetch(GET_ALL_RESTAURANTS_API)
+    //         .then((response)=>{
+    //             if(!response.ok){
+    //                 throw new Error("Network response is not OK");
+    //             }
+    //             return response.json();
+    //         })
+    //         .then((data)=>{
+    //             setRestaurants(data?.data?.cards[2]?.data?.data?.cards);
+    //             setTotalRestaurants(data?.data?.cards[2]?.data?.data?.totalOpenRestaurants);
+    //             setFilteredRestaurants(data?.data?.cards[2]?.data?.data?.cards);
+    //         })
+    //         .catch((error)=>{
+    //             console.log("Something is wrong with your fetch operation!");
+    //         })
+    // }
 
-    console.log("render");
+    getRestaurants= async() => {
+        const response = await fetch(
+            GET_ALL_RESTAURANTS_API
+        );
+        const data = await response.json();
+        setRestaurants(data?.data?.cards[2]?.data?.data?.cards);
+        setTotalRestaurants(data?.data?.cards[2]?.data?.data?.totalOpenRestaurants);
+        setFilteredRestaurants(data?.data?.cards[2]?.data?.data?.cards);
+    };
+
     return (
         restaurants.length === 0 ?
             <ShimmerUI/>
@@ -50,6 +59,7 @@ const Body = () => {
                             value={searchInput}
                             onChange={(e) => { setSearchInput(e.target.value); } } 
                             className="border-2 w-80 px-4 py-2 rounded-lg"
+                            data-testid="search-input"
                         />
                         <button
                             onClick={() => {
@@ -57,6 +67,7 @@ const Body = () => {
                                 setFilteredRestaurants(data);
                             } }
                             className="bg-[#fc8019] text-white px-4 py-2 rounded-md ml-2"
+                            data-testid="search-button"
                         >
                             Search
                         </button>
@@ -68,7 +79,7 @@ const Body = () => {
                         )}></input> */}
                     </div>
                 </div>
-                <div className='flex flex-wrap mx-6 my-4 justify-center'>
+                <div className='flex flex-wrap mx-6 my-4 justify-center' data-testid='restaurant-list'>
                     {/* the spread operator is spreading the restaurantList[i].data object into
                     individual props which can then be destructured as prop parameter with
                     their individual keys */}

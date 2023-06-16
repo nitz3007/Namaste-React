@@ -4,9 +4,9 @@
 const Footer = () => {
     // const {user} = useContext(UserContext);
     return (
-        <div className='bg-black px-4 p'>
+        <footer className='bg-black px-4 p'>
             <p className='font-semibold text-white'>Created by Niharika</p>
-        </div>
+        </footer>
     );
 }
 

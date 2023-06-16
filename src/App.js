@@ -34,7 +34,9 @@ const AppLayout = () => {
                 setUser: setUser
             }}>
             <Header/>
-            <Outlet/>
+            <main>
+                <Outlet/>
+            </main>
             <Footer/>
         </UserContext.Provider>   
         </Provider>
