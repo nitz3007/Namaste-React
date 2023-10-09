@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import ShimmerUI from "./ShimmerUI";
+import MenuShimmer from "./MenuShimmer";
 // import useRestaurant from "../utils/useRestaurant";
 import GreenStar from '../assets/green_star.svg';
 import Clock from '../assets/clock.png';
@@ -37,7 +37,7 @@ const RestaurantMenu = () => {
     
     return (
         (!restaurantDetails) ?
-        <ShimmerUI/> :
+        <MenuShimmer/> :
         <div className="mx-40 my-8" data-testid="menu">
             {/* Restaurant Header */}
             <div className="p-4">

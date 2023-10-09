@@ -4,6 +4,7 @@ import NonVeg from '../assets/non-veg.png';
 import {CARD_IMG_URL} from "../constants";
 import {useDispatch} from 'react-redux';
 import {addItem} from '../utils/cartSlice';
+import DownArrow from "../assets/chevron-down.svg";
 
 const MenuSection = ({cardInfo, isVisible, setIsVisible, restaurantName, restaurantArea}) => {
     const dispatch = useDispatch();
@@ -21,8 +22,8 @@ const MenuSection = ({cardInfo, isVisible, setIsVisible, restaurantName, restaur
             <div className="py-2 flex justify-between">
                 <span className="font-sans font-bold text-xl ">{cardInfo.title} ({cardInfo.itemCards.length})</span>
                 {isVisible?
-                    <button onClick={()=>setIsVisible(false)}>Hide</button> :
-                    <button onClick={()=>setIsVisible(true)}>Show</button>
+                    <button onClick={()=>setIsVisible(false)}><img src={DownArrow} alt="hide" className="rotate-180"/></button> :
+                    <button onClick={()=>setIsVisible(true)}><img src={DownArrow} alt="show"/></button>
                 }
             </div>
             {isVisible && cardInfo.itemCards.map((item, i) => 

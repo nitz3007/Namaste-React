@@ -34,7 +34,7 @@ const AppLayout = () => {
                 setUser: setUser
             }}>
             <Header/>
-            <main>
+            <main className='min-h-[85vh]'>
                 <Outlet/>
             </main>
             <Footer/>
@@ -57,10 +57,10 @@ const appRouter = createBrowserRouter([
                 path: '/about',
                 element: <About/>
             },
-            {
-                path: '/contacts',
-                element: <Contacts/>
-            },
+            // {
+            //     path: '/contacts',
+            //     element: <Contacts/>
+            // },
             {
                 path: '/restaurant/:id',
                 element: <RestaurantMenu/>

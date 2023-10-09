@@ -1,10 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addItem, removeItem } from "../utils/cartSlice";
+import {useNavigate} from 'react-router-dom';
 
 const Cart = () => {
     const cartInfo = useSelector(store => store.cart);
     const dispatch = useDispatch();
     console.log(cartInfo, "cart info");
+    const navigate = useNavigate();
 
     const handleAddItem = (item) => {
         const itemInfo = {
@@ -26,8 +28,14 @@ const Cart = () => {
     }
 
     if(cartInfo.items.length === 0){
-        return <div>
-            <p>Your Cart is Empty!!!</p>
+        return <div className="flex flex-col items-center min-h-[85vh] justify-center">
+            <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0" alt="empty-cart" className="w-80"/>
+            <h1 className="font-semibold text-lg mt-4">Your cart is empty!</h1>
+            <p className="text-sm text-[#686b78]">You can go to home page to view more restaurants.</p>
+            <button className="bg-[#fc8019] text-white px-4 py-2 rounded-md mt-6"
+            onClick={()=>navigate("/")}>
+                See Restaurants near you
+            </button>
         </div>
     }
 
