@@ -46,7 +46,7 @@ const Body = () => {
     };
 
     return (
-        restaurants.length === 0 ?
+        restaurants?.length === 0 ?
             <ShimmerUI/>
             :
             <>
@@ -84,9 +84,9 @@ const Body = () => {
                     individual props which can then be destructured as prop parameter with
                     their individual keys */}
 
-                    {filteredRestaurants.length === 0 ?
+                    {filteredRestaurants?.length === 0 ?
                         <h3>No Restaurants matches with your search</h3>:
-                        filteredRestaurants.map(restaurant => (
+                        filteredRestaurants?.map(restaurant => (
                             <Link to={"/restaurant/"+restaurant.data.id}  key={restaurant.data.id}>
                                 <RestaurantCard {...restaurant.data} />
                             </Link>
