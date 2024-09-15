@@ -31,6 +31,11 @@ Emmet is a plugin which provides shortcut abbreviations for writing HTML, CSS, X
 ```
 Refer [Emmet Article](https://medium.com/@kartik2406/web-development-with-vs-code-part-1-emmet-6af80f0f630c/) for more info on Emmet abbriviations.
 - - - -    
+### Difference between a Library and Framework?
+A library and framework both are codes written by someone else which helps us in solving a common problem. The key difference between library and framework is **Inversion of Control**. 
+We call library in our code, whenever and wherever we want. Thus, we have the control on the flow of the code.
+Whereas, frameworks gives us spaces where we can enter the code and it has the control on the flow of excution of our code. This is inversion of control.
+- - - - -
 ### CDN:
 CDN is a group of geographically distributed and interconnected servers. It helps in faster delivery of web content to the user.
 
@@ -64,8 +69,24 @@ React is named 'React' because this ibrary was created to be fast & responsive o
 - - - - - -
 
 ### What is crossorigin in script tag?
-
-
+A crossorigin attribute sets the mode of request to HTTP CORS request.It handles how to fetch resources(script/data/images/videos) from an
+server with different domain.
+CORS stands for Cross Origin Resource Sharing. It allows web pages to request resouces from another domain outside their own domain.
+```
+<script crossorigin="anonymous | use-credentials" src="http://xyz"></script>
+```
 - - - - - -
+### What is diference between React and ReactDOM?
+
+React, at its core, is a library for building User Interface. It introduces the concept of components which  allows user to craft reusable and self-contained UI elements. React operates with a virtual representation of DOM, an abstraction of the actual browser DOM. This virtual DOM helps React to update the DOM effectively when the data changes, making it fast and performant. 
+
+ReactDOM acts as a glue between the Virtual DOM and the actul DOM. It provides methods to render React Component into the DOM. Basically, React returns a UI element/component as an object. ReactDOM renders that object into the DOM by making it understandable for the browser. It offers ReactDOM.render() method which takes a React Component and renders it into the specified DOM Node. 
+React DOM is specific to web browsers. 
+
+This separation is made to make React platform-agnostic. We use other libraries like ReactNative(for mobile app) and ReactVR(for VR) along with the React library. 
+- - - - - -
+### What is difference between react.development.js and react.production.js files via CDN?
+
+- -  - -
 
 Difference between async & defer?
