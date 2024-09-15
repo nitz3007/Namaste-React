@@ -87,6 +87,16 @@ This separation is made to make React platform-agnostic. We use other libraries 
 - - - - - -
 ### What is difference between react.development.js and react.production.js files via CDN?
 
-- -  - -
+**Development Link**
+The development link is supposed to be used during the development phase.
+It includes additional debugging tools, and helpful warning & error messages.
+The file is larger in size and impacts the performance of the application.
+It is not ideal for production use.
 
-Difference between async & defer?
+**Production Link**
+The production link is meant to be used during deployment in the production environment.
+It does not includes development specific debugging tools, and messages.
+The file size is smaller and improves the performance of the application.
+Ideal for production use.
+- -  - -
+### What is async and defer?
