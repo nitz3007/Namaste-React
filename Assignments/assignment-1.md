@@ -100,3 +100,12 @@ The file size is smaller and improves the performance of the application.
 Ideal for production use.
 - -  - -
 ### What is async and defer?
+Earlier we used to call the script inside the head tag. In this case, the html parsing was stopped in between to download the script and execute it. Once script execution is done. The browser resumed html parsing.
+
+To solve this issue, the outdated solution was to place the script at the end of the body tag so that the html parsing is done first and then the downloading and execution of script takes place.
+
+Nowadays, browser supports async and defer attributes which makes the whole process faster.
+
+**Async** : Async lets browser download the scripts asynchronously while parsing html. Once the script is downloaded, its execution starts without waiting for the html parsing to be done. If there are multiple scripts, they start executing as soon as they are downloaded and thus the scripts are executed irrespective of their order in the document.
+
+**Defer** : Defer lets browser download the script asynchronously along with html parsing but the execution of the script is deferred until the html parsing is finished. Here the scripts are executed in the order they appear in the document.
